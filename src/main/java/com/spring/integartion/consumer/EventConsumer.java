@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.Locale;
 
 @Service
-public class EventConsumerTwo {
+public class EventConsumer {
     @ServiceActivator(inputChannel = "eventChannel")
-    public void reciveEvent(Message<Event> message){
+    public void reciveEvent1(Message<Event> message){
+        System.out.println("ConsumeOne 1 "+message.getPayload());
+    }
+    @ServiceActivator(inputChannel = "eventChannel")
+    public void reciveEvent2(Message<Event> message){
 
 
         System.out.println("ConsumeTwo 2 "+message.getPayload().toString().toUpperCase(Locale.ROOT));
